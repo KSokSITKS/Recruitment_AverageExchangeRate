@@ -67,12 +67,27 @@ namespace AverageExchangeRate
 
         private void InitializeDataGridView()
         {
-            this.dgRates.AutoGenerateColumns = true;
             this.dgRates.AllowUserToAddRows = false;
             this.dgRates.AllowUserToDeleteRows = false;
             this.dgRates.ReadOnly = true;
             this.dgRates.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgRates.MultiSelect = false;
-        }
+
+			this.dgRates.Columns.Add(new DataGridViewTextBoxColumn
+			{
+				DataPropertyName = "Code",
+				HeaderText = "Waluta",
+				Name = "Code",
+				AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+			});
+
+			this.dgRates.Columns.Add(new DataGridViewTextBoxColumn
+			{
+				DataPropertyName = "RateValue",
+				HeaderText = "Średni kurs",
+				Name = "RateValue",
+				AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+			});
+		}
     }
 }
