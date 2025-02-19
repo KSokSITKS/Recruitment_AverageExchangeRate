@@ -1,18 +1,32 @@
-﻿namespace AverageExchangeRate.Data
+﻿using TextFileProcessing.Attributes;
+
+namespace AverageExchangeRate.Data
 {
-    public enum Month
-    {
-        January = 1,
-        February = 2,
-        March = 3,
-        April = 4,
-        May = 5,
-        June = 6,
-        July = 7,
-        August = 8,
-        September = 9,
-        October = 10,
-        November = 11,
-        December = 12
-    }
+	public enum Month
+	{
+		[Name("Styczeń")]
+		January = 1,
+		[Name("Luty")]
+		February = 2,
+		[Name("Marzec")]
+		March = 3,
+		[Name("Kwiecień")]
+		April = 4,
+		[Name("Maj")]
+		May = 5,
+		[Name("Czerwiec")]
+		June = 6,
+		[Name("Lipiec")]
+		July = 7,
+		[Name("Sierpień")]
+		August = 8,
+		[Name("Wrzesień")]
+		September = 9,
+		[Name("Październik")]
+		October = 10,
+		[Name("Listopad")]
+		November = 11,
+		[Name("Grudzień")]
+		December = 12
+	}
 }

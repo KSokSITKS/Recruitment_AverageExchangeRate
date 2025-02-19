@@ -2,8 +2,10 @@
 using AverageExchangeRate.RatesProviders.Interfaces;
 using Serilog;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TextFileProcessing.Extensions;
 
 namespace AverageExchangeRate
 {
@@ -44,11 +46,19 @@ namespace AverageExchangeRate
         }
 
 		private void AddMonthsToComboBox()
-        {
-            cbArchiveDataMonth.DataSource = Enum.GetValues(typeof(Month));
-        }
+		{
+			var months = Enum.GetValues(typeof(Month)).Cast<Month>().Select(month => new
+			{
+				Value = month,
+				DisplayName = month.GetName()
+			}).ToList();
 
-        private async Task RetrieveAndDisplayRatesAsync(IRatesProvider provider)
+			cbArchiveDataMonth.DataSource = months;
+			cbArchiveDataMonth.DisplayMember = "DisplayName";
+			cbArchiveDataMonth.ValueMember = "Value";
+		}
+
+		private async Task RetrieveAndDisplayRatesAsync(IRatesProvider provider)
         {
 			this.Rates = await provider.GetRatesAsync();
 
